@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление напитками</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Стили для формы, если нужно -->
+</head>
+<body>
+    <h1>Управление напитками</h1>
+
+    <!-- Форма для добавления напитка -->
+    <h2>Добавить напиток</h2>
+    <form action="/editForm/add" method="POST">
+        <label for="addName">Название:</label>
+        <input type="text" id="addName" name="name" required>
+        <label for="addPrice">Цена:</label>
+        <input type="number" id="addPrice" name="price" required>
+        <label for="addCategoryID">ID категории:</label>
+        <input type="number" id="addCategoryID" name="categoryID" required>
+        <label for="addImage">Изображение:</label>
+        <input type="text" id="addImage" name="image">
+        <button type="submit">Добавить напиток</button>
+    </form>
+
+    <!-- Форма для редактирования напитка -->
+    <h2>Редактировать напиток</h2>
+    <form action="/editForm/edit" method="POST">
+        <label for="editId">ID напитка:</label>
+        <input type="number" id="editId" name="id" required>
+        <label for="editName">Новое название:</label>
+        <input type="text" id="editName" name="name" required>
+        <label for="editPrice">Новая цена:</label>
+        <input type="number" id="editPrice" name="price" required>
+        <label for="editCategoryID">Новый ID категории:</label>
+        <input type="number" id="editCategoryID" name="categoryID" required>
+        <label for="editImage">Новое изображение:</label>
+        <input type="text" id="editImage" name="image">
+        <button type="submit">Редактировать напиток</button>
+    </form>
+
+    <!-- Форма для удаления напитка -->
+    <h2>Удалить напиток</h2>
+    <form action="/editForm/delete" method="POST">
+        <label for="deleteId">ID напитка:</label>
+        <input type="number" id="deleteId" name="id" required>
+        <button type="submit">Удалить напиток</button>
+    </form>
+</body>
+</html>
