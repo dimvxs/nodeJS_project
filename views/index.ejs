@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты</title>
+</head>
+<body>
+    <h1>Публикации</h1>
+    <ul>
+        <p><a href="/post/backToEditForm">Вернуться назад</a></p> 
+        <% posts.forEach(post => { %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p><%= post.descript %></p>
+                <p><strong>Локация:</strong> <%= post.location %></p>
+                <p><strong>ID:</strong> <%= post.postID %></p>
+                <% if (post.image) { %>
+                    <img src="/images/<%= post.image %>" alt="Image" style="max-width: 200px;"/>
+                <% } %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>

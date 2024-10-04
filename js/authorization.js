@@ -18,27 +18,41 @@ router.use(function(req, res, next) {
 });
 
 
+router.get('/', function(req, res){
+    res.sendFile(path.join(__dirname, '../html/authorization.html'));
+});
 
 
 
 
-router.post('/', function(req, res){
+
+router.post('/login', function(req, res){
     var login = req.body.login;
     var password = req.body.password;
-    var query = 'SELECT * FROM admins WHERE login = ? AND password = ?';
+    var query = 'SELECT * FROM users WHERE login = ? AND password = ?';
 
     req.dbConnection.execute(query, [login, password], (err, results) => {
         if (err) {
-        console.log("Login failed: ", req.body.login)
-        return res.status(500).send('Login error');
+        console.log("Login failed: ", req.body.login);
+        req.dbConnection.release(); 
+        return res.redirect('/failedLogin');
         }
     
         if (results.length > 0) {
-            req.session.login = login; 
-            console.log("Login succeeded: ", req.session.login);
-            return res.send('Login successful: ' + 'sessionID: ' + req.session.id + '; user: ' + req.session.login);
+            // req.session.login = login; 
+            // console.log("Login succeeded: ", req.session.login);
+                        console.log("Login succeeded");
+                        req.dbConnection.release(); 
+                        return res.redirect('/editForm');
+
+                              
+            // return res.send('Login successful: ' + 'sessionID: ' + req.session.id + '; user: ' + req.session.login);
         }
     
+
+        else{
+            return res.redirect('/failedLogin');
+        }
     
        
 });

